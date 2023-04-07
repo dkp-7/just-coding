@@ -1,5 +1,6 @@
 //Next permutation in Lexicographical order     (leetcode :  31.Next Permutation)
 
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -28,6 +29,13 @@ void nextPermutation(vector<int>& nums) {
         vector<string> ans;
         int i=0;
         permute(number , n, i, ans);
+        for(string x : ans){
+            cout<<x<<"  ";
+        }
+        cout<<endl;
+        
+        sort(ans.begin() , ans.end());
+        
         for(string x : ans){
             cout<<x<<"  ";
         }
