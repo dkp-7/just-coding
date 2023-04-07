@@ -7,7 +7,7 @@ using namespace std;
 
 void permute(string &number, int n, int i, vector<string> &ans){
 
-        if(i == n){           // or n-1
+        if(i == n){
             ans.push_back(number);
             return;
         }
@@ -31,17 +31,22 @@ void nextPermutation(vector<int>& nums) {
         cout<<endl;
         sort(ans.begin() , ans.end());
         for(string x : ans){
-            cout<< x <<"  ";
+            cout<<x<<"  ";
         }
         cout<<endl;
         nums.clear();
-        if(ans[0] == number){
-            int a = stoi(ans[1]);
+        
+        if(ans[ans.size()-1] == number){
+            int a = stoi(ans[0]);
             nums.push_back(a);
         }
         else{
-            int a = stoi(ans[0]);
-            nums.push_back(a);
+            for(int i=0; i<ans.size()-1; i++){
+                if(ans[i] == number){
+                    int a = stoi(ans[i+1]);
+                    nums.push_back(a);
+                }
+            }
         }
         cout<<nums[0]<<endl;
     }
