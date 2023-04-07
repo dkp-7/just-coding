@@ -19,9 +19,11 @@ void permute(string &number, int n, int i, vector<string> &ans){
     }
 
 void nextPermutation(vector<int>& nums) {
-
+        
         string number = to_string(nums[0]);
+        string oldnumber = number;
         sort(number.begin() , number.end());
+        cout<<number<<endl;
         int n = number.length();
         vector<string> ans;
         int i=0;
@@ -30,21 +32,16 @@ void nextPermutation(vector<int>& nums) {
             cout<<x<<"  ";
         }
         cout<<endl;
-        
-        for(string x : ans){
-            cout<<x<<"  ";
-        }
-        cout<<endl;
         nums.clear();
         
         for(int i=0; i<ans.size()-1; i++){
-            if(ans[i] == number){
+            if(ans[i] == oldnumber){
                 int a = stoi(ans[i+1]);
                 nums.push_back(a);
             }
         }
         
-        if(ans[ans.size()-1] == number){
+        if(ans[ans.size()-1] == oldnumber){
             int a = stoi(ans[0]);
             nums.push_back(a);
         }
@@ -54,33 +51,7 @@ void nextPermutation(vector<int>& nums) {
 
 int main()
 {
-    vector<int> nums = {115};
-    nextPermutation(nums);
-    cout<<"Hello World";
-
-    return 0;
-}
-        cout<<endl;
-        nums.clear();
-        
-        if(ans[ans.size()-1] == number){
-            int a = stoi(ans[0]);
-            nums.push_back(a);
-        }
-        else{
-            for(int i=0; i<ans.size()-1; i++){
-                if(ans[i] == number){
-                    int a = stoi(ans[i+1]);
-                    nums.push_back(a);
-                }
-            }
-        }
-        cout<<nums[0]<<endl;
-    }
-
-int main()
-{
-    vector<int> nums = {231};
+    vector<int> nums = {312};
     nextPermutation(nums);
     cout<<"Hello World";
 
