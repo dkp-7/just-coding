@@ -42,18 +42,26 @@ void nextPermutation(vector<int>& nums) {
         cout<<endl;
         nums.clear();
         
-        for(int i=0; i<ans.size()-1; i++){
-            if(ans[i] == oldnumber){
-                int a = stoi(ans[i+1]);
-                nums.push_back(a);
+        if(ans[ans.size()-1] != oldnumber){
+            for(int i=0; i<ans.size()-1; i++){
+                if((ans[i] == oldnumber)  &&  (ans[i+1] != oldnumber)){
+
+                    for(char c : ans[i+1]){
+                        int a = c - '0';
+                        nums.push_back(a);
+                    }
+                }
             }
         }
-        
-        if(ans[ans.size()-1] == oldnumber){
-            int a = stoi(ans[0]);
-            nums.push_back(a);
-        }
 
+        else{
+            for(char c : ans[0]){
+                int a = c - '0';
+                nums.push_back(a);
+            }
+        }        
+          
+    }
         cout<<nums[0]<<endl;
     }
 
