@@ -3,11 +3,7 @@
 
 using namespace std;
 
-void quickSort(vector<int> &nums, int s, int e){
-    
-    if(s>=e){
-        return;
-    }
+int partition(vector<int> &nums, int s, int e){
     int p = e;
     int border = s-1;
     for(int i=s; i<=e; i++){
@@ -18,8 +14,17 @@ void quickSort(vector<int> &nums, int s, int e){
     }
     p = border+1;
     swap(nums[p] , nums[e]);
+    return p;
+}
+
+void quickSort(vector<int> &nums, int s, int e){
     
-    //int p = partition(nums, s, e);
+    if(s>=e){
+        return;
+    }
+    
+    int p = partition(nums, s, e);
+    
     quickSort(nums , s , p-1);
     quickSort(nums , p+1 , e);
 }
