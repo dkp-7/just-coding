@@ -30,14 +30,14 @@ int partition(vector<int> &nums2, int s, int e){
     return pivot;
 }
 
-void insort(vector<int> &nums2, int s, int e){
+void qsort(vector<int> &nums2, int s, int e){
     if(s>e){
         return;
     }
     
     int p = partition(nums2, s, e);
-    insort(nums2, s, p-1);
-    insort(nums2, p+1, e);
+    qsort(nums2, s, p-1);
+    qsort(nums2, p+1, e);
     return;
 }
 
@@ -49,7 +49,7 @@ void qsorting(vector<int> &nums1 , vector<int> &nums2){
     for(int i=0; i<m; i++){
         if(nums1[i] > nums2[0]){
             swap(nums1[i] , nums2[0]);
-            insort(nums2, s, e);
+            qnsort(nums2, s, e);      //quicksort
         }
     }
     
