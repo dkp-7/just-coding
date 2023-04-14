@@ -1,3 +1,47 @@
+pair<int,int> missingAndRepeating(vector<int> &arr, int n)
+{
+	pair<int,int> ans;
+	int m,r;
+	long long int sum = (n*(n+1)/2);
+	long long int square = (n*(n+1)*(2*n+1)/6);
+	
+	for(int x : arr){
+		sum = sum-x;
+		square = square - (x*x);
+	}
+	
+	/*
+	We know, 
+	sum = m-r   ------  1
+	square = m*m - r*r
+	so, it is also
+	square = (m-r)(m+r)
+	square = sum(m+r)
+	m+r = square/sum    -----   2
+	
+	Adding eq. 1 & 2
+	
+	2m = (square/sum) + sum
+	m = ((square/sum)+sum) / 2      -->Missing no. formula
+	so, from 1
+	r = m - sum           --> Repeating no. formula
+	*/
+	
+	m = ((square/sum)+sum) / 2  ;
+	r = m - sum ;
+	
+	ans.first = m;
+	ans.second = r;
+	
+	return ans;
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -57,3 +101,7 @@ int main()
     cout<<"Missing No. -> "<<ans.first<<endl<<"Repeating No. ->  "<<ans.second;
     return 0;
 }
+
+
+
+*/
