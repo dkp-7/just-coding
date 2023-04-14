@@ -1,3 +1,5 @@
+// Optimal Approach              (Leetcode Question 74)
+
 #include <iostream>
 #include <vector>
 
@@ -50,3 +52,39 @@ int main()
     
     return 0;
 }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/*
+
+// Optimal (but less than 1st)
+
+bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+        bool ans = false;
+        int s=0, e=(m*n)-1;
+        while(s<=e){
+            int mid = (s+e)/2;
+            int i = mid/n;
+            int j = mid % n;
+
+            if( target == matrix[i][j] ){
+                ans = true;
+                return ans;
+            }
+            else if(target > matrix[i][j] ){
+                s = mid+1;
+            }
+            else if(target < matrix[i][j] ){
+                e = mid-1;
+            }
+        }
+        return ans;
+}
+
+
+*/
