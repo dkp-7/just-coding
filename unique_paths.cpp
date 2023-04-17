@@ -1,5 +1,27 @@
 // Leetcode 62. Unique Paths    (From top left (0,0)  to  bottom right  (m-1,n-1)
 
+//Most optimal way using combinations nCr
+
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        int N = n+m-2;      //tOTAL_steps
+        int R = m-1;              //or n-1
+        
+            /*
+                n C r => 10 C 3 = (10*8*9) / (3*2*1);
+            */
+        double ans = 1;
+        for(int i=1; i<=R; i++){
+            ans = ans * (N-R+i)/i;
+        } 
+        return (int)ans;
+    }
+};
+
+
+
+/*
 // Optimal way to solve this is to use dynamic programming in the recursive approach
 
 class Solution {
@@ -38,8 +60,8 @@ public:
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*
 
 // these are recursive approach, in this TC is exponential and time limit exceeds when we run the code because we go through all the possibilities
 
