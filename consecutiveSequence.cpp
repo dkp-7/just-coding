@@ -1,6 +1,37 @@
 // Leetcode :      128. Longest Consecutive Sequence
 
 
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        
+        int n = nums.size();
+        if(n==0) return 0;
+        
+        sort(nums.begin() , nums.end());
+        int c=1;
+        int maxi = 0;
+        
+        for(int i=0; i<n-1; i++){
+            
+            if(nums[i] == nums[i+1]-1){
+                c++;
+            }
+            else if(nums[i] == nums[i+1]){
+                c=c;
+            }
+            else{
+                maxi = max(maxi , c);
+                c=1; 
+            }
+        }
+        maxi = max(maxi , c);
+        return maxi;
+    }
+};
+
+
+/*
 
 #include <vector>
 #include <iostream>
@@ -49,3 +80,4 @@ int main()
 
     return 0;
 }
+*/
