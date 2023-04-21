@@ -15,6 +15,46 @@ public:
             hashset.insert(nums[i]);
         }
         int maxi = INT_MIN;
+        int cnt=1; 
+        
+        for(auto it : hashset){           //one have to iterate through set / map elements like this
+            
+            if(hashset.find(it-1)  == hashset.end()){      //this means it is first element in consecutive order
+                int k = it;
+                int cnt=1; 
+                
+                while(hashset.find(k+1) != hashset.end()){
+                    cnt++;
+                    k = k+1;
+                }
+                maxi = max(maxi , cnt);
+            }
+            else{
+                cnt = 1;
+            }
+            maxi = max(maxi , cnt);
+        }
+        return maxi;
+    }
+};
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        
+        int n = nums.size();
+        if(n == 0) return 0;
+        
+        unordered_set<int> hashset;      //set stores only unique elements
+        
+        for(int i=0; i<n; i++){
+            hashset.insert(nums[i]);
+        }
+        int maxi = INT_MIN;
         
         for(auto it : hashset){           //one have to iterate through set / map elements like this
             
