@@ -28,6 +28,33 @@ public:
 };
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /*
 // Recursive Approach
+
+class Solution {
+public:
+    
+    void helper(ListNode* &head , ListNode* &temp){
+        
+        if(head == NULL){
+            return;
+        }
+        ListNode* nn = head->next;
+        head->next = temp;
+        temp = head;
+        head = nn;
+        helper(head , temp);
+        
+    }
+    
+    ListNode* reverseList(ListNode* head) {
+        
+        ListNode*  temp = NULL;
+        helper(head , temp);
+        return temp;
+    }
+};
+
 */
