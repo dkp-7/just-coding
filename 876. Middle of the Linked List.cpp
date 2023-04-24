@@ -1,5 +1,28 @@
 //  Leetcode :   876. Middle of the Linked List
-//Most optimal: runtime is 0ms (faster than 100% when using while loop instead of for)
+
+//Optimal Approach using 2 pointer (fast & slow  ||  tortoise-hare approach)   T.C. : O(N)
+
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast != NULL  &&  fast->next != NULL){
+
+            fast = fast->next;
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return slow;
+    }
+};
+
+
+
+/*
+
+// runtime is 0ms (faster than 100% when using while loop instead of for loop, but for small input only)  T.c will be O(n*(n/2))
 
 class Solution {
 public:
@@ -20,3 +43,6 @@ public:
         return head;
     }
 };
+
+
+*/
