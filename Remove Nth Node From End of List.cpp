@@ -11,6 +11,48 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+// IN ONE PASS
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+
+        ListNode* fast = head;
+        ListNode* slow = head;
+        int c = 0;
+        while(fast != NULL){
+            c++;
+            fast = fast->next;
+            if(c > n+1){
+                slow = slow->next;
+            }
+        }
+        if(c == n) return head->next;
+        else{
+            slow->next = slow->next->next;
+            return head;
+        }
+    }
+};
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
