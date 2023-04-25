@@ -1,6 +1,6 @@
 //Leetcode :    21. Merge Two Sorted Lists
 
-
+//IN-PLACE SOLUTION without using extra space
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -42,7 +42,7 @@ public:
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+//Solution using extra space / linked list
 /**
  * Definition for singly-linked list.
  * struct ListNode {
