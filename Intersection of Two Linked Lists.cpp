@@ -52,6 +52,50 @@ public:
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+
+// Again, using difference of length of lists by changing the list pointers to other nodes when it reaches null, once both the pointer traverse the full nodes of their list, (2) pointer currently at the bigger node will be starting from the(length difference) nodes ahead of the start, so now the pointers are bound to collide naturally where the list intersect each other.
+
+
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        
+        ListNode* p1 = headA;
+        ListNode* p2 = headB;
+        
+        for(int i=1; i<=2; i++){
+            while(p1 !=NULL  &&  p2 != NULL){
+                p1 = p1->next;
+                p2 = p2->next;
+            }
+            if(p1 == NULL) p1 = headB;
+            else p2 = headA;
+        }
+        
+        // (2)
+        while(p1 != p2  &&  p1 != NULL  &&  p2 != NULL){
+            p1 = p1->next;
+            p2 = p2->next;
+        }
+        if(p1 == p2) return p1;
+        else return NULL;  
+        
+    }
+};
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
