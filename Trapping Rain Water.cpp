@@ -1,6 +1,54 @@
 //LeetCode  :       42. Trapping Rain Water
 
 
+// Most optimal approach (2 Pointer)        TC : O(N)          SC : O(1)
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        
+        //Using 2 Pointer Approach
+        int n = height.size();
+        int ans = 0;
+        int leftmax = INT_MIN;
+        int rightmax = INT_MIN;
+
+        int left=0, right=n-1;
+        while(left < right){
+
+            //this block will only execute if there is a bigger/equal element to the right of this element
+            if(height[left] <= height[right]){
+                if(height[left] >= leftmax){
+                    leftmax = height[left];
+                }
+                else{
+                    ans += leftmax-height[left];
+                }
+                left++;
+            }
+
+            ////this block will only execute if there is a bigger element to the left of this element
+
+            else{          //if(height[right] < height[left])
+                if(height[right] >= rightmax){
+                    rightmax = height[right];
+                }
+                else{
+                    ans += rightmax-height[right];
+                }
+                right--;
+            }
+        }
+        return ans;
+    }
+};
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 //Better Approach               TC : O(3N) i.e, similar to O(N)      SC : O(2N)
 
 class Solution {
