@@ -43,9 +43,11 @@ Expected Auxilliary Space : O(N)
 
 */
 
+// Using Structure
 
-
+#include <iostream>
 #include <bits/stdc++.h> 
+using namespace std;
 
 struct meeting{
     int s;
@@ -78,7 +80,7 @@ vector<int> maximumMeetings(vector<int> &start, vector<int> &end) {
     //Sorting meeting based on its end time
     sort(meet , meet+n , compare);
     
-    //1st meeting in sorted "meet" will always happen
+    //1st meeing in sorted "meet" will always happen
     ans.push_back(meet[0].pos);
     int limit = meet[0].e;
     
@@ -90,4 +92,81 @@ vector<int> maximumMeetings(vector<int> &start, vector<int> &end) {
         }
     }
     return ans;
+}
+
+int main()
+{
+    vector<int> start = {1, 3, 0, 5, 8, 5};
+    vector<int> end = {2, 4, 6 ,7 ,9 ,9};
+    
+    vector<int> ans =maximumMeetings(start , end);
+    for(int x : ans){
+        cout<<x<< "  ";
+    }
+    return 0;
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Using vectors    (Time Limit Exceeding)
+
+
+#include <iostream>
+#include <bits/stdc++.h> 
+using namespace std;
+
+
+
+//compare function to compare meeting end times for sorting purpose
+bool compare(vector<int> m1, vector<int> m2){
+    if(m1[1] < m2[1])  return true;
+    if(m1[1] > m2[1])  return false;
+    if(m1[2] < m2[2])  return true;  //incase if end times are equal, compare position
+    return false;
+}
+
+
+vector<int> maximumMeetings(vector<int> &start, vector<int> &end) {
+    
+    vector<int> ans;
+    int n = start.size();
+    
+    vector<vector<int>> meeting;
+    for(int i=0; i<n; i++){
+        vector<int> meet(3,0);
+        meet[0] = start[i];
+        meet[1] = end[i];
+        meet[2] = i+1;
+        meeting.push_back(meet);
+    }
+
+    //Sorting meeting based on its end time
+    sort(meeting.begin(), meeting.end(), compare);
+    
+    //1st meeting in sorted "meet" will always happen
+    ans.push_back(meeting[0][2]);
+    int limit = meeting[0][1];
+    
+    //now checking which other meetings will happen
+    for(int i=0; i<n; i++){
+        if(meeting[i][0] > limit){
+            ans.push_back(meeting[i][2]);
+            limit = meeting[i][1];
+        }
+    }
+    return ans;
+}
+
+int main()
+{
+    vector<int> start = {1, 3, 0, 5, 8, 5};
+    vector<int> end = {2, 4, 6 ,7 ,9 ,9};
+    
+    vector<int> ans =maximumMeetings(start , end);
+    for(int x : ans){
+        cout<<x<< "  ";
+    }
+    return 0;
 }
