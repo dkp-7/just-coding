@@ -4,6 +4,53 @@ Link1 : https://practice.geeksforgeeks.org/problems/fractional-knapsack-15871156
 Link2 : https://www.codingninjas.com/codestudio/problems/975286?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=3
 
 
+
+SC : O(1)        TC : O(n log n)
+
+#include <bits/stdc++.h> 
+
+bool compare(pair<int,int> p1 , pair<int,int> p2){
+    
+    //sorting based on value/weight(kg)
+    double a = (double)p1.second / p1.first;
+    double b = (double)p2.second / p2.first;
+    return a>b;
+}
+
+double maximumValue (vector<pair<int, int>>& items, int n, int w)
+{
+    // Write your code here.
+    // ITEMS contains {weight, value} pairs.
+    if(n>1){
+        sort(items.begin() , items.end() , compare);
+    }
+    
+
+    //here using for loop is important, 
+    //because if using : while(w>0), there may be a casethat all the
+    // items are filled in the bag, but the bag still has space left
+    
+    double profit = 0;
+    for(int k=0; k<n; k++){
+        
+        if(w >= items[k].first   &&  w>0){
+            profit += items[k].second;
+            w = w - items[k].first;
+            items[k].first = 0;
+        }
+        else if(w < items[k].first){
+            profit += ((double)items[k].second / items[k].first)*(double)w;
+            items[k].first -= w;
+            w=0;
+        }
+    }
+    return profit;
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 SC : O(1)        TC : O(n log n)
 
 //Not passing all the test cases
