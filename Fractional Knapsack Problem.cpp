@@ -4,9 +4,77 @@ Link1 : https://practice.geeksforgeeks.org/problems/fractional-knapsack-15871156
 Link2 : https://www.codingninjas.com/codestudio/problems/975286?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=3
 
 
+SC : O(1)        TC : O(n log n)
+
+//Not passing all the test cases
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+ 
+
+bool compare(pair<int,int> p1 , pair<int,int> p2){
+    
+    //sorting based on value/weight(kg)
+    double a = (double)p1.second / p1.first;
+    double b = (double)p2.second / p2.first;
+    return a>b;
+}
+
+double maximumValue (vector<pair<int, int>>& items, int n, int w)
+{
+    // Write your code here.
+    // ITEMS contains {weight, value} pairs.
+    cout<<"Before Sort"<<endl;
+    for(int i=0; i<n; i++){
+        cout<<"weight : "<<items[i].first<<"         value : "<<items[i].second<<endl;
+    }
+
+    if(n>1){
+        sort(items.begin() , items.end() , compare);
+    }
+    
+    cout<<"After Sort"<<endl;
+    for(int i=0; i<n; i++){
+        cout<<"weight : "<<items[i].first<<"         value : "<<items[i].second<<endl;
+    }
+    double profit = 0;
+    int k=0;
+    while(w > 0){
+        
+        if(w >= items[k].first){
+            profit += items[k].second;
+            w = w - items[k].first;
+            items[k].first = 0;
+            k++;
+        }
+        else if(w < items[k].first){
+            profit += ((double)items[k].second / items[k].first)*(double)w;
+            items[k].first -= w;
+            w=0;
+        }
+    }
+    cout<<"After Operation"<<endl;
+    for(int i=0; i<n; i++){
+        cout<<"weight : "<<items[i].first<<"         value : "<<items[i].second<<endl;
+    }
+    return profit;
+}
+
+
+int main()
+{
+    vector<pair<int, int>> items = { {20 , 100},{10 ,60},{30 , 120} };
+    int n =3;
+    int w = 50;
+    double ans = maximumValue(items, n, w);
+    cout<<ans;
+    return 0;
+}
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 // it is working generally, BUT not working on Coding Ninja wesite
 
