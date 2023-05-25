@@ -22,7 +22,6 @@ bool helper(vector<vector<int>> &maze, int n, int row, int col, vector<vector<in
 
 //down
   if(row<n-1  &&  maze[row+1][col] != 0  &&  ans[row+1][col] != 1){
-    //maze[row][col] = -1;
     ans[row][col] = 1;
     if(helper(maze, n, row+1, col, ans, ans2) == true){
       return true;
@@ -32,7 +31,6 @@ bool helper(vector<vector<int>> &maze, int n, int row, int col, vector<vector<in
   
 //right
   if(col<n-1  &&  maze[row][col+1] != 0  &&  ans[row][col+1] != 1){
-    //maze[row][col] = -1;
     ans[row][col] = 1;
     if(helper(maze, n, row, col+1, ans, ans2) == true){
       return true;
@@ -42,7 +40,6 @@ bool helper(vector<vector<int>> &maze, int n, int row, int col, vector<vector<in
 
 //left
   if(col>0  &&  maze[row][col-1] != 0  &&  ans[row][col-1] != 1){
-    //maze[row][col] = -1;
     ans[row][col] = 1;
     if(helper(maze, n, row, col-1, ans, ans2) == true){
       return true;
@@ -52,7 +49,6 @@ bool helper(vector<vector<int>> &maze, int n, int row, int col, vector<vector<in
 
 //up
   if(row>0  &&  maze[row-1][col] != 0  &&  ans[row-1][col] != 1){
-    //maze[row][col] = -1;
     ans[row][col] = 1;
     if(helper(maze, n, row-1, col, ans, ans2) == true){
       return true;
