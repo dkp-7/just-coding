@@ -15,7 +15,7 @@ int lessThanOrEqual(vector<int> mat , int limit){
         }
         else h=md-1;
     }
-    return l;
+    return l;        //this line will return the value as (index+1), which is the count of elements less than or equal to limit value 
 }
 
 
@@ -38,8 +38,7 @@ int getMedian(vector<vector<int>> &matrix)
         else high=mid-1;
         
     }
-    return low;
-}
+    return low;         // this line will return the value one greater than ((m8n)/2) i.e one more than the index value of middle element from total element of matrix whose indexing starts from 0
 
 
 
