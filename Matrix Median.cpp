@@ -6,7 +6,7 @@
 
 int lessThanOrEqual(vector<int> mat , int limit){
     int l = 0;
-    int h = mat.size()-1;                //here -1 at the end is very important to pass all given the test case
+    int h = mat.size()-1;                //here -1 at the end is very important to pass all given the test case (the search space should be from index 0 to last index)
     
     while(l <= h){
         int md = (l+h)/2;
