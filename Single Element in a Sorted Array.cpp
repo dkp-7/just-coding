@@ -2,6 +2,34 @@
 
 //Optimal method using (Binary Search + XOR)
 
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+        
+        int n = nums.size();
+        int low = 0;
+        int high = n-2;
+
+        while(low <= high){
+            int mid = (low + high)/2;
+            /*
+            even XOR 1  ==  NEXT ODD
+            odd XOR 1  ==  previous even
+            */
+
+            //it will only be true, when mid is even
+            if(nums[mid] == nums[mid^1]){
+                low = mid+1;
+            }
+            else{
+                high = mid-1;
+            }
+        }
+        //when low has crossed high, single element is at index 'low'
+        return nums[low];
+    }
+};
+
 ---------------------------------------------------------------------------
 
 //Optimal method using Binary Search
