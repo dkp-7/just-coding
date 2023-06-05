@@ -1,6 +1,48 @@
 // Question :  Allocate Books
 // Question link (Coding Ninja) : https://www.codingninjas.com/codestudio/problems/ayush-gives-ninjatest_1097574?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website
 
+
+bool isPossible(int n, int m, vector<int> times, int limit){
+    
+    int day = 1;
+    int sum = 0;
+    for(int k=0; k<m; k++){
+        if(times[k] > limit) return false;
+        
+        if((sum + times[k]) <= limit){
+            sum += times[k];
+        }
+        else{
+            sum = times[k];
+            day++;
+        }
+    }
+    if(day <= n) return true;
+    return false;
+}
+
+long long ayushGivesNinjatest(int n, int m, vector<int> times) 
+{	
+    int low = INT_MAX;
+    int high = 0;
+	for(int i=0; i<m; i++){
+        low = min(low, times[i]);
+        high += times[i];
+    }
+
+    while(low <= high){
+        int mid = (low+high)/2;
+        
+        if(isPossible(n, m, times, mid)){
+            high = mid-1;
+        }
+        else low = mid+1;
+    }
+    return low;
+}
+
+----------------------------------------------------------------------------------------------------
+
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
