@@ -5,11 +5,11 @@
 bool isPossible(vector<int> &stalls, int k, int mid){
 
     int cows = k-1;                  //because 1st cow will always be put inside the 1st stall
-    int d1 = 0;
+    int lastPlacedCow = stalls[0];
     for(int i=1; i < stalls.size(); i++){
         if(cows == 0) return true;
-        if(stalls[i]-stalls[d1] >= mid){
-            d1 = i;
+        if(stalls[i]-lastPlacedCow >= mid){
+            lastPlacedCow = stalls[i];
             cows--;
         }
     }
