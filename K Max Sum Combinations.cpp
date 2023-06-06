@@ -1,6 +1,30 @@
 // Question (Coding Ninjas):  K Max Sum Combinations
 //Link :  https://www.codingninjas.com/codestudio/problems/k-max-sum-combinations_975322?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
 
+
+#include <bits/stdc++.h> 
+vector<int> kMaxSumCombination(vector<int> &a, vector<int> &b, int n, int k){
+	// Write your code here.
+	priority_queue<int> pq;
+	
+	for(int i=0; i<n; i++){
+		for(int j=0; j<n; j++){
+			pq.push(a[i]+b[j]);
+		}
+	}
+	
+	vector<int> ans;
+	for(int i=0; i<k; i++){
+		ans.push_back(pq.top());
+		pq.pop();
+	}
+	return ans;
+}
+
+
+-----------------------------------------------------------------------------------------------------
+
+
 #include <bits/stdc++.h> 
 
 void check(vector<int> &ans, int sum){
