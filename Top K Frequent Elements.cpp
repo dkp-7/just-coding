@@ -1,6 +1,42 @@
 // Leetcode :  347. Top K Frequent Elements
 
 
+// most optimal approach   TC : O(N)
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        
+        int n = nums.size();
+        unordered_map<int,int> um;
+        for(int i=0; i<n; i++){
+            um[nums[i]]++;
+        }
+
+        vector<vector<int>> counts(n+1);
+        for(auto it : um){
+            counts[it.second].push_back(it.first);
+        }
+
+        vector<int> ans(k);
+        int c=0;
+        for(int i=n; i>0; i--){
+            if(!counts[i].empty()){
+
+                for(int j=0; j<counts[i].size(); j++){
+                    ans[c++] = counts[i][j];
+                    if(c == k) break;
+                }
+                if(c == k) break;
+            }        
+        }
+        return ans;
+    }
+};
+
+
+-----------------------------------------------------------------------------------------------
+
 // using priority queue (and make_pair() function in range based loop)
 class Solution {
 public:
