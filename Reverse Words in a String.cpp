@@ -1,6 +1,42 @@
 //    Leetcode :  151. Reverse Words in a String
 
 
+// Optimal method using 2 pointer Approach
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        
+        int n = s.length();
+        int i = n-1;
+        int j = n-1;
+        string ans;
+
+        while(i>=0){
+
+            while(i >= 0   &&   s[i] != ' '){
+                i--;
+            } 
+
+            if(ans == ""){
+                ans =  s.substr(i+1 , j-i);
+            }
+
+            else if(ans != ""){
+                ans += " " + s.substr(i+1 , j-i);
+            }
+            while(i>=0  &&  s[i]==' '){       //note :  i>=0 should always come first
+                i--;
+                j = i;
+            }
+        }
+        return ans;
+    }
+};
+
+
+-------------------------------------------------------------------------------------
+
 class Solution {
 public:
     string reverseWords(string s) {
