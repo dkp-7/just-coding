@@ -1,6 +1,57 @@
 // Leetcode :   5. Longest Palindromic Substring
 
 
+// Using 2 pointer approach      TC: O(n*n)       SC: O(1)
+
+class Solution {
+public:
+
+    int palindrome(string s , int l, int r){
+
+        int n = s.length();
+        int maxlen = INT_MIN;
+
+        while(l>=0  &&  r<n  &&  s[l]==s[r]){
+            l--;
+            r++;
+        }
+
+        maxlen = r-l+1-2;
+        return maxlen;
+    }
+
+    string longestPalindrome(string s) {
+        
+        int n = s.length();
+        string ans;
+        int start = 0;
+        int end = 0;
+        int longest = INT_MIN;
+
+        for(int ind=0; ind<n; ind++){
+
+            int n1 = palindrome(s , ind , ind);
+            int n2 = palindrome(s , ind , ind+1);
+
+            int len = max(n1 , n2);
+
+            if(longest < len){     
+
+                longest = len;
+                //then adjust start & end indexes of new longest string
+                start = ind - (len-1)/2;
+                end = ind + (len/2);
+                ans = s.substr(start , end-start+1);
+            } 
+            
+        }
+        return ans;
+    }
+};
+
+
+-------------------------------------------------------------------------------------------------------
+
 // Using Dynamic Programming      TC: O(n*n)       SC: O(N*N)
 
 class Solution {
