@@ -41,7 +41,7 @@ public:
                 //then adjust start & end indexes of new longest string
                 start = ind - (len-1)/2;
                 end = ind + (len/2);
-                ans = s.substr(start , end-start+1);
+                ans = s.substr(start , end-start+1);                // or just use "s.substr(start , len)"
             } 
             
         }
