@@ -1,7 +1,7 @@
 // Leetcode :  242. Valid Anagram
 
 
-// Using Hashing
+// Using Hashing                tc : O(n)     SC: O(n)
 
 class Solution {
 public:
@@ -20,5 +20,22 @@ public:
             um[t[j]]--;
         }
         return true;
+    }
+};
+
+
+----------------------------------------------------------------
+    
+    
+// Using Sorting              tc : O(n logn)     SC: O(1)
+    
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        
+        sort(s.begin() , s.end());
+        sort(t.begin() , t.end());
+        if(s == t) return true;
+        else return false;
     }
 };
