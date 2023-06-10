@@ -12,6 +12,33 @@ public:
         for(int i=3; i<=n; i++){
             ans = ans+"$";
             string ans1 = "";
+            for(int j=0; j<ans.length()-1; j++){
+                int cnt = 1;
+                while(ans[j]==ans[j+1]   &&   j<ans.length()-1){
+                    cnt++;
+                    j++;
+                }
+                ans1 += to_string(cnt) + ans[j];
+            }
+            ans = ans1;
+        }
+        return ans;
+    }
+};
+
+------------------------------------------------------------------------------------------
+
+class Solution {
+public:
+    string countAndSay(int n) {
+        
+        if(n == 1) return "1";
+        if(n == 2) return "11";
+        
+        string ans = "11";
+        for(int i=3; i<=n; i++){
+            ans = ans+"$";
+            string ans1 = "";
             for(int j=1; j<ans.length(); j++){
                 int cnt = 1;
                 while(ans[j]==ans[j-1]   &&   j<ans.length()){
