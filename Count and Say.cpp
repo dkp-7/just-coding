@@ -1,6 +1,41 @@
 // Leetcode :   38. Count and Say
 
 
+
+// using if-else and not while, but this will have no effect in time complexity
+
+class Solution {
+public:
+    string countAndSay(int n) {
+        
+        if(n == 1) return "1";
+        if(n == 2) return "11";
+        
+        string ans = "11";
+        for(int i=3; i<=n; i++){
+            ans = ans+"$";
+            string ans1 = "";
+            int cnt = 1;                                    // here count will be outside for
+            for(int j=0; j<ans.length()-1; j++){
+                
+                if(ans[j] != ans[j+1]){
+                    ans1 += to_string(cnt) + ans[j];
+                    cnt = 1;                                // and we change count as 1 whenever , there is some addition to ans1 string
+                }
+                else{
+                    cnt++;
+                }
+                
+            }
+            ans = ans1;
+        }
+        return ans;
+    }
+};
+
+
+-------------------------------------------------------------------------------------------
+
 class Solution {
 public:
     string countAndSay(int n) {
