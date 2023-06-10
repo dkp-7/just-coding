@@ -18,13 +18,13 @@ public:
             p1++;  p2++; sum1=0; sum2=0;
 
             while(p1<n1  &&  version1[p1] != '.'){
-                if(sum1>=1)  sum1 = sum1*10 + (int)version1[p1]-'0';
+                if(sum1>=1)  sum1 = sum1*10 + version1[p1]-'0';
                 else sum1 += version1[p1]-'0';
                 p1++;
             }
 
             while(p2<n2  &&  version2[p2] != '.'){
-                if(sum2>=1)  sum2 = sum2*10 + (int)version2[p2]-'0';
+                if(sum2>=1)  sum2 = sum2*10 + version2[p2]-'0';
                 else sum2 += version2[p2]-'0';
                 p2++;
             }
