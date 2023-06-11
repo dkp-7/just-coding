@@ -7,7 +7,7 @@
 
 bool isPossible(vector<vector<int>> &mat, int v, int clr, vector<int> colour){
     
-    for(int j=0; j<mat.size(); j++){
+    for(int j=0; j<mat[v].size(); j++){
         if(mat[v][j] == 1){
             if(colour[j] == clr)  return false; 
         }
