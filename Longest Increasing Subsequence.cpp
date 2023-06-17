@@ -1,5 +1,31 @@
 // Leetcode :  300. Longest Increasing Subsequence
 
+// Using Dynamic Programming (memoization)
+class Solution {
+public:
+
+    int f(vector<int>& nums, int n, int ind, int prev_ind, vector<vector<int>> &dp){
+        if(ind == n) return 0;
+
+        if(dp[ind][prev_ind+1] != -1)  return dp[ind][prev_ind+1];
+        //for not pick
+        int np = 0 + f(nums, n, ind+1, prev_ind, dp);
+        //for pick
+        int pick = 0;
+        if(prev_ind == -1  ||  nums[prev_ind] < nums[ind]){
+            pick =  1 + f(nums, n, ind+1, ind, dp);
+        }
+        return dp[ind][prev_ind+1] = max(pick , np);
+    }
+
+    int lengthOfLIS(vector<int>& nums) {
+
+        int n = nums.size();
+        vector<vector<int>> dp(n , vector<int>(n+1, -1));
+        int prev_ind =  -1;
+        return f(nums , n , 0 , prev_ind, dp);   
+    }
+};
 
 
 //Time Limit Exceeding for large size inputs
