@@ -7,6 +7,29 @@
 class Solution {
 public:
 
+    int f(vector<int>& nums, int n, int ind, int prev){
+        if(ind == n) return 0;
+
+        //for not pick
+        int len = 0 + f(nums, n, ind+1, prev);
+        //for pick
+        if(prev==-1  ||  prev<nums[ind]){
+            len = max(len , 1 + f(nums, n, ind+1, nums[ind]));
+        }
+        return len;
+    }
+
+    int lengthOfLIS(vector<int>& nums) {
+
+        int n = nums.size();
+        int prev =  INT_MIN;
+        return f(nums , n , 0 , prev);   
+    }
+};
+---------------------------------------------------------------------------------------------
+class Solution {
+public:
+
     int f(vector<int>& nums , int n , int ind , int cnt , int prev){
         if(ind == n) return cnt;
 
