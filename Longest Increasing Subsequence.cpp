@@ -13,7 +13,7 @@ public:
         //for not pick
         int len = 0 + f(nums, n, ind+1, prev);
         //for pick
-        if(prev==-1  ||  prev<nums[ind]){
+        if(prev==INT_MIN  ||  prev<nums[ind]){
             len = max(len , 1 + f(nums, n, ind+1, nums[ind]));
         }
         return len;
