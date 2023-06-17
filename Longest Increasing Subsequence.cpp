@@ -11,6 +11,30 @@ public:
         if(ind == n) return 0;
 
         //for not pick
+        int np = 0 + f(nums, n, ind+1, prev);
+        //for pick
+        int pick = 0;
+        if(prev==INT_MIN  ||  prev<nums[ind]){
+            pick =  1 + f(nums, n, ind+1, nums[ind]);
+        }
+        return max(pick , np);
+    }
+
+    int lengthOfLIS(vector<int>& nums) {
+
+        int n = nums.size();
+        int prev =  INT_MIN;
+        return f(nums , n , 0 , prev);   
+    }
+};
+--------------------------------------------------------------------------------------
+class Solution {
+public:
+
+    int f(vector<int>& nums, int n, int ind, int prev){
+        if(ind == n) return 0;
+
+        //for not pick
         int len = 0 + f(nums, n, ind+1, prev);
         //for pick
         if(prev==INT_MIN  ||  prev<nums[ind]){
